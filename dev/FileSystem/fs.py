@@ -39,7 +39,7 @@ class GameDataFat:
             f2b = fBuffer.read(2)
             fBuffer.seek(0)
             compressed = GameDataFat.is_compressed(f2b)
-            fResult = zlib.decompress(fBuffer) if compressed else fBuffer.read()
+            fResult = zlib.decompress(fBuffer.read()) if compressed else fBuffer.read()
             return io.BytesIO(fResult)
            
     def __read_file(self):
@@ -227,3 +227,4 @@ class GameDataManager:
                 with open(ngd_item_path, mode='wb') as ef:
                     ef.write(zlib.decompress(new_data))
                     log.info(f"Write file: {item_data.id}.")
+
