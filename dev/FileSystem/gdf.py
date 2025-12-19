@@ -98,13 +98,11 @@ class GameDataFile:
 
         for i in range(chunks_count):
             fchunk = return_fileclass(*unpack("<I4sII", init_data.read(16)), i)
-            # TODO: Deleta after checking anim
-            ###
             if fchunk.type is GameDataChunkType.ANIM:
-                fchunk.export()
-            ###
+            fchunk.export()
             self.chunks.append(fchunk)
             log.info(f"ID={self.id}\tChunk[{i}]={fchunk.type.name} analyzed and added to GameDataFile.")            
 
         init_data.close()
         self.analyzed = True
+
