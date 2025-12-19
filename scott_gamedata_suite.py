@@ -23,4 +23,5 @@ if __name__ == "__main__":
     elif args.mode == 'import':
         newFat.pack()
     else:
-        print("Command does not exist"
+
+        print("Command does not exist")
